@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" role="document">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,17 +19,22 @@
     <title>Frontend Mentor | FAQ Accordion Card</title>
   </head>
   <body>
-    <img src="/src/images/illustration-box-desktop.svg" alt="" id="box" />
-    <div class="container">
-      <div class="bg-image">
+    <img
+      src="/src/images/illustration-box-desktop.svg"
+      alt=""
+      id="box"
+      role="img"
+    />
+    <main class="container" role="main">
+      <div class="bg-image" role="img">
         <div class="woman"></div>
         <div class="bg-pattern"></div>
       </div>
-      <div class="content">
+      <div class="content" role="doc-qna">
         <h1>FAQ</h1>
         <div class="question">
           <div class="question-header">
-            <h3>How many team members can I invite?</h3>
+            <h2>How many team members can I invite?</h2>
           </div>
           <p class="answer">
             You can invite up to 2 additional users on the Free plan. There is
@@ -38,7 +43,7 @@
         </div>
         <div class="question">
           <div class="question-header">
-            <h3>What is the maximum file upload size?</h3>
+            <h2>What is the maximum file upload size?</h2>
           </div>
           <p class="answer">
             No more than 2GB. All files in your account must fit your allotted
@@ -47,7 +52,7 @@
         </div>
         <div class="question">
           <div class="question-header">
-            <h3>How do I reset my password?</h3>
+            <h2>How do I reset my password?</h2>
           </div>
           <p class="answer">
             Click “Forgot password” from the login page or “Change password”
@@ -56,7 +61,7 @@
         </div>
         <div class="question">
           <div class="question-header">
-            <h3>Can I cancel my subscription?</h3>
+            <h2>Can I cancel my subscription?</h2>
           </div>
           <p class="answer">
             Yes! Send us a message and we’ll process your request no questions
@@ -65,7 +70,7 @@
         </div>
         <div class="question">
           <div class="question-header">
-            <h3>Do you provide additional support?</h3>
+            <h2>Do you provide additional support?</h2>
           </div>
           <p class="answer">
             Chat and email support is available 24/7. Phone lines are open
@@ -73,8 +78,8 @@
           </p>
         </div>
       </div>
-    </div>
-    <script type="text/javascript">
+    </main>
+    <script>
       const questionHeader = document.querySelectorAll(".question-header");
       const box = document.getElementById("box");
       const container = document.querySelector(".container");
@@ -87,11 +92,15 @@
       });
 
       setInterval(() => {
-        box.style.setProperty(
-          "left",
-          `calc((${window.innerWidth}px - ${container.offsetWidth}px) / 2 - 8em)`
-        );
-      }, 500);
+        if (window.innerWidth < 1060 && window.innerWidth > 900) {
+          box.style.setProperty(
+            "left",
+            `calc((${window.innerWidth}px - ${container.offsetWidth}px) / 2 - 8em)`
+          );
+          return;
+        }
+        box.style.removeProperty("left");
+      }, 1000);
     </script>
   </body>
 </html>
